@@ -8,7 +8,7 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDiHmybVvkE1770qi9QdLOEgYc7Ym_UE_I",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "crave-cart-711c2.firebaseapp.com",
   projectId: "crave-cart-711c2",
   storageBucket: "crave-cart-711c2.firebasestorage.app",
