@@ -95,7 +95,7 @@ const Body = () => {
             <input
               type="text"
               data-testid="searchInput"
-              className="px-2 py-1 border border-solid border-black mr-2.5 bg-white lg:w-full sm:w-auto flex-grow rounded-md"
+              className="px-2 py-1 border border-solid border-black mr-0 lg:mr-2.5 bg-white lg:w-full sm:w-auto flex-grow rounded-md"
               value={searchText}
               placeholder="Search restaurants..."
               onChange={(e) => {
@@ -103,20 +103,26 @@ const Body = () => {
               }}
             ></input>
             <button
-              className="bg-green-300 px-2 py-1 rounded-md font-semibold sm:ml-0 lg:ml-8 my-2"
+              className="bg-green-300 px-2 py-1 rounded-md font-semibold sm:ml-0 lg:ml-14 my-2"
               onClick={filteredSearch}
             >
               Search
             </button>
             <button
-              className="filter-btn bg-green-300 px-2 py-1 ml-0 lg:ml-8 rounded-md font-semibold"
+              className="filter-btn bg-green-300 px-0 lg:px-2 py-1 ml-0 lg:ml-8 rounded-md font-semibold"
               onClick={filteredData}
             >
               Top Rated Restaurants
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 ml-16 lg:ml-0 p-2 lg:p-4">
+        <h2 className="font-bold text-xl ml-8 pt-4 hidden sm:block">
+          Top Restaurants With Online Food Delivery in Salem
+        </h2>
+        <h2 className="font-bold text-lg ml-16 py-4 sm:hidden">
+          Top Restaurants in Salem
+        </h2>
+        <div className="pt-18 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 ml-16 lg:ml-0 p-2 lg:p-4">
           {paginatedRestaurants?.length > 0 &&
             paginatedRestaurants.map((restaurant) => (
               <Link

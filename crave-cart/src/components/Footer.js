@@ -69,7 +69,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-center text-xs text-black mt-4">
+      <div className="text-center mr-0 lg:mr-12 text-xs text-black mt-4">
         © {new Date().getFullYear()} Cravecart. All rights reserved.
       </div>
     </footer>

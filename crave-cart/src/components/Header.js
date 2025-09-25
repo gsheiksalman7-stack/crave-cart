@@ -35,7 +35,7 @@ const Header = () => {
         </Link>
       </div>
       <div className="nav-container">
-        <ul className="flex flex-wrap p-2 m-1 gap-y-2 lg:gap-y-0">
+        <ul className="flex flex-wrap p-2 m-1 mr-0 lg:mr-8 gap-y-2 lg:gap-y-0">
           <li className="px-4 text-lg font-bold cursor-pointer my-2">
             <Link to="/" className="hover:border-b-2 border-black border-solid">
               Home
