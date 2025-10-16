@@ -61,7 +61,6 @@ export const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
-      { path: "/restaurants/:resId", element: <RestaurantMenu /> },
       {
         path: "/cart",
         element: <Cart />,

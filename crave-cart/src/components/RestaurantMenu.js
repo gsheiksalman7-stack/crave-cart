@@ -8,7 +8,7 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const [showItems, setShowItems] = useState(0);
-
+console.log(resInfo)
   if (resInfo === null) return <Loading />;
 
   const categories =

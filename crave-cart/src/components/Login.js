@@ -77,7 +77,7 @@ const Login = () => {
         </h1>
         {!isSignInForm && (
           <>
-            <label className="text-sm font-bold">Full Name:</label>
+            <label className="text-lg font-bold">Full Name:</label>
             <input
               ref={fullName}
               type="text"
