@@ -28,82 +28,59 @@ const Header = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto py-2 flex justify-between items-center bg-orange-200 shadow-lg">
-      <div className="logo-container">
+    <div className="w-full sm:max-w-screen-xl sm:mx-auto py-2 px-4 overflow-x-hidden bg-orange-200 shadow-lg">
+      <div className="flex flex-wrap justify-between items-center w-full">
+        {/* Logo */}
         <Link to="/">
-          <img className="w-28" src={LOGO_URL} />
+          <img className="w-24 sm:w-28 ml-32 sm:ml-0" src={LOGO_URL} alt="Logo" />
         </Link>
-      </div>
-      <div className="nav-container">
-        <ul className="flex flex-wrap p-2 m-1 mr-0 lg:mr-8 gap-y-2 lg:gap-y-0">
-          <li className="px-4 text-lg font-bold cursor-pointer my-2">
-            <Link to="/" className="hover:border-b-2 border-black border-solid">
-              Home
+
+        {/* Navigation */}
+        <ul className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 text-base sm:text-lg font-bold mt-4 sm:mt-0">
+          <li>
+            <Link to="/" className="hover:border-b-2 border-black">Home</Link>
+          </li>
+          <li>
+            <Link to="/about" className="hover:border-b-2 border-black">About</Link>
+          </li>
+          <li>
+            <Link to="/contact" className="hover:border-b-2 border-black">Contact</Link>
+          </li>
+          <li className="relative">
+            <Link to="/cart" className="flex items-center">
+              <FaCartShopping className="w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="bg-red-400 text-white text-xs px-2 rounded-full absolute -top-2 -right-3">
+                {cartItems.length}
+              </span>
             </Link>
           </li>
-          <li className="px-4 text-lg font-bold cursor-pointer my-2">
-            <Link
-              to="/about"
-              className="hover:border-b-2 border-black border-solid"
-            >
-              About
-            </Link>
-          </li>
-          <li className="px-4 text-lg font-bold cursor-pointer my-2">
-            <Link
-              to="/contact"
-              className="hover:border-b-2 border-black border-solid"
-            >
-              Contact Us
-            </Link>
-          </li>
-          <li className="font-bold text-lg px-4 mx-2 p-2 cursor-pointer my-2.5">
-            <Link to="/cart">
-              <div className="flex relative">
-                <FaCartShopping className="w-12" />
-                <span
-                  data-testid="cart-count"
-                  className="bg-red-400 px-2 rounded-3xl absolute bottom-[15px]"
-                >
-                  {cartItems.length}
-                </span>
-              </div>
-            </Link>
-          </li>
-          <div className="mt-3">
+          <li className="pl-6 sm:pl-0">
             {isLoggedIn ? (
               <button
                 onClick={handleLogout}
-                className="px-2 py-1 mr-2 text-base rounded-lg font-bold
-      cursor-pointer bg-red-400 border-2 border-gray-400 solid hover:border-black"
+                className="px-2 sm:px-3 py-1 bg-red-400 text-white rounded hover:bg-red-500 text-sm sm:text-base"
               >
                 Logout
               </button>
             ) : (
               <Link
                 to="/Login"
-                className="px-2 py-1 mr-2 text-base rounded-lg font-bold
-      cursor-pointer bg-red-400 border-2 border-gray-400 solid hover:border-black"
+                className="px-2 sm:px-3 py-1 bg-red-400 text-white rounded hover:bg-red-500 text-sm sm:text-base"
               >
                 Login
               </Link>
             )}
-          </div>
-          <li className="mr-8 my-4.5 text-lg font-bold">
-            <img
-              alt="profile-icon.png"
-              className="w-20 absolute"
-              src={PROFILE_LOGO}
-            />
-            <span className="relative text-md top-6 left-10">
-              {isLoggedIn ? "🟢" : "🔴"}
-            </span>
-            {isLoggedIn && (
-              <h2 className="absolute text-sm right-2 top-[95px] lg:top-[75px]">
-                Hi <span>{username}!</span>{" "}
-              </h2>
-            )}
           </li>
+          {isLoggedIn && (
+            <li className="hidden sm:flex items-center space-x-2">
+              <img
+                src={PROFILE_LOGO}
+                alt="Profile"
+                className="w-8 h-8 sm:w-10 sm:h-10 object-cover rounded-full"
+              />
+              <span className="text-sm">Hi {username}!</span>
+            </li>
+          )}
         </ul>
       </div>
     </div>

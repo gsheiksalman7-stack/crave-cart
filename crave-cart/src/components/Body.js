@@ -89,82 +89,81 @@ const Body = () => {
 
   return (
     <>
-      <div className="max-w-screen-xl mx-auto bg-lime-50">
-        <div className="gap-2 max-w-xs lg:max-w-md mx-auto">
-          <div className="m-3.5 p-2 grid grid-rows-3 lg:block ">
-            <input
-              type="text"
-              data-testid="searchInput"
-              className="px-2 py-1 border border-solid border-black mr-0 lg:mr-2.5 bg-white lg:w-full sm:w-auto flex-grow rounded-md"
-              value={searchText}
-              placeholder="Search restaurants..."
-              onChange={(e) => {
-                setSearchText(e.target.value);
-              }}
-            ></input>
-            <button
-              className="bg-green-300 px-2 py-1 rounded-md font-semibold sm:ml-0 lg:ml-14 my-2"
-              onClick={filteredSearch}
-            >
-              Search
-            </button>
-            <button
-              className="filter-btn bg-green-300 px-0 lg:px-2 py-1 ml-0 lg:ml-8 rounded-md font-semibold"
-              onClick={filteredData}
-            >
-              Top Rated Restaurants
-            </button>
-          </div>
-        </div>
-        <h2 className="font-bold text-xl ml-8 pt-4 hidden sm:block">
-          Top Restaurants With Online Food Delivery in Salem
-        </h2>
-        <h2 className="font-bold text-lg ml-16 py-4 sm:hidden">
-          Top Restaurants in Salem
-        </h2>
-        <div className="pt-18 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 ml-16 lg:ml-0 p-2 lg:p-4">
-          {paginatedRestaurants?.length > 0 &&
-            paginatedRestaurants.map((restaurant) => (
-              <Link
-                key={restaurant.info.id}
-                to={"/restaurants/" + restaurant.info.id}
-              >
-                {restaurant.info.aggregatedDiscountInfoV3 ? (
-                  <CardWithOffer resdata={restaurant} />
-                ) : (
-                  <RestaurantCard resdata={restaurant} />
-                )}
-              </Link>
-            ))}
-        </div>
-        <div className="flex justify-center my-4">
+      <div className="m-3.5 p-2 flex justify-center">
+        <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-2 w-full max-w-md mx-auto">
+          <input
+            type="text"
+            data-testid="searchInput"
+            className="px-2 py-1 border border-black bg-white rounded-md w-full sm:w-64"
+            value={searchText}
+            placeholder="Search restaurants..."
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
           <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-            className="px-3 py-1 mx-1 bg-green-300 rounded disabled:opacity-50"
+            className="bg-green-300 px-2 py-1 rounded-md font-semibold text-sm sm:text-base"
+            onClick={filteredSearch}
           >
-            Prev
+            Search
           </button>
-          <span className="font-semibold text-sm bg-white px-3 py-1 rounded shadow">
-            Page {currentPage}
-          </span>
           <button
-            disabled={currentPage * itemsPerPage >= filteredRestaurant.length}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-            className="px-3 py-1 mx-1 bg-green-300 rounded disabled:opacity-50"
+            className="bg-green-300 px-2 py-1 rounded-md font-semibold text-sm sm:text-base whitespace-nowrap"
+            onClick={filteredData}
           >
-            Next
+            Top Rated Restaurants
           </button>
         </div>
+      </div>
+      <h2 className="font-bold text-xl ml-8 pt-4 hidden sm:block">
+        Top Restaurants With Online Food Delivery in Salem
+      </h2>
+      <h2 className="font-bold text-lg ml-24 py-4 sm:hidden">
+        Top Restaurants in Salem
+      </h2>
+      <div className="pt-18 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 p-2 lg:p-4">
+        {paginatedRestaurants?.length > 0 &&
+          paginatedRestaurants.map((restaurant) => (
+            <Link
+              key={restaurant.info.id}
+              to={"/restaurants/" + restaurant.info.id}
+            >
+              {restaurant.info.aggregatedDiscountInfoV3 ? (
+                <CardWithOffer resdata={restaurant} />
+              ) : (
+                <RestaurantCard resdata={restaurant} />
+              )}
+            </Link>
+          ))}
+      </div>
+      <div className="flex justify-center my-4">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          className="px-3 py-1 mx-1 bg-green-300 rounded disabled:opacity-50"
+        >
+          Prev
+        </button>
+        <span className="font-semibold text-sm bg-white px-3 py-1 rounded shadow">
+          Page {currentPage}
+        </span>
+        <button
+          disabled={currentPage * itemsPerPage >= filteredRestaurant.length}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+          className="px-3 py-1 mx-1 bg-green-300 rounded disabled:opacity-50"
+        >
+          Next
+        </button>
       </div>
       {showTopBtn && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg sm:hidden"
+          className="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg sm:hidden z-50"
         >
           ↑ Top
         </button>
-      )}
+      )
+      }
       <Footer />
     </>
   );

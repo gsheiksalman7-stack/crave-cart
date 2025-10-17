@@ -15,7 +15,7 @@ const RestaurantCard = (props) => {
   return (
     <div
       data-testid="resCards"
-      className="rounded-lg bg-gray-200 hover:bg-gray-300 m-2 p-3 w-[220px] sm:w-[200px] md:w-[180px] lg:w-[220px] h-[340px] shadow-md transition-all duration-200"
+      className="rounded-lg bg-gray-200 hover:bg-gray-300 m-2 p-3 h-[260px] sm:h-[340px] w-[160px] sm:w-[200px] md:w-[180px] lg:w-[220px] shadow-md transition-all duration-200"
     >
       <div className="aspect-w-16 aspect-h-9">
         <img
@@ -30,9 +30,9 @@ const RestaurantCard = (props) => {
       <div className="font-semibold text-sm space-y-1">
         <h2 className="font-bold text-lg truncate">{name}</h2>
         <p className="text-gray-700 line-clamp-2">{cuisines?.join(", ")}</p>
-        <p>{costForTwo}</p>
+        <p className="hidden sm:block">{costForTwo}</p>
         <p>⭐ {avgRating}</p>
-        <p>ETA: {sla?.slaString}</p>
+        <p className="hidden sm:block">ETA: {sla?.slaString}</p>
       </div>
     </div>
   );
@@ -46,7 +46,7 @@ export const offerCard = (RestaurantCard) => {
     return (
       <div className="relative min-h-[40px]">
         <RestaurantCard {...props} />
-        <div className="absolute bottom-[200px] left-5 bg-red-400 text-black text-xs sm:text-sm md:text-base font-semibold px-2 py-1 rounded-br-md shadow-md z-10">
+        <div className="absolute bottom-[120px] left-5 sm:bottom-[200px] sm:left-5 bg-red-400 text-black text-xs sm:text-sm md:text-base font-semibold px-2 py-1 rounded-br-md shadow-md z-10">
           {header} {subHeader}
         </div>
       </div>

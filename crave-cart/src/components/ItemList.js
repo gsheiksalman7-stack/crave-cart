@@ -29,9 +29,9 @@ const ItemList = ({ items }) => {
         <div
           data-testid="foodItems"
           key={item.card.info.id + index}
-          className="min-h-[8rem] p-4 rounded-md shadow-sm border-b-2 border-gray-300 bg-white flex flex-col sm:flex-row justify-between items-start sm:items-center text-left"
+          className="min-h-[8rem] p-4 rounded-md shadow-sm border-b-2 border-gray-300 bg-white flex flex-row justify-between items-center text-left gap-4"
         >
-          <div className="sm:w-2/3 w-full mb-4 sm:mb-0">
+          <div className="w-2/3">
             <h3 className="font-semibold text-base sm:text-lg mb-1">
               {item.card.info.name}
             </h3>
@@ -40,7 +40,7 @@ const ItemList = ({ items }) => {
               - ₹{" "}
               {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 hidden sm:block">
               {item.card.info.description}
             </p>
           </div>
